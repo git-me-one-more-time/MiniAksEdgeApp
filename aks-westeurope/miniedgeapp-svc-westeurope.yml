@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: miniedgeapp-westeurope-service
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 52.166.118.76
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  selector:
+    app: miniedgeapp
+

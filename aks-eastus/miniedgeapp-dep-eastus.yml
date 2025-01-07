@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: miniedgeapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: miniedgeapp
+  template:
+    metadata:
+      labels:
+        app: miniedgeapp
+    spec:
+      containers:
+      - name: miniedgeapp
+        image: miniedgeappacr.azurecr.io/minimal_edge_app1:0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: REGION
+          value: "eastus"
