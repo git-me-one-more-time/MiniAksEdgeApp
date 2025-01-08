@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# Define URLs
 GLOBAL_URL="http://miniedgeapp.trafficmanager.net/"
 EAST_US_URL="http://miniedgeapp.eastus.cloudapp.azure.com/"
 
-# Perform the first curl request and extract HTTP code and time
 echo "Testing URL: $GLOBAL_URL"
 RESULT1=$(curl -w "HTTP code: %{http_code}\nTotal Time: %{time_total}" -o /dev/null -s $GLOBAL_URL)
 CODE1=$(echo "$RESULT1" | grep "HTTP code" | awk '{print $NF}')
@@ -13,7 +11,6 @@ echo "$RESULT1 seconds"
 
 echo ""
 
-# Perform the second curl request and extract HTTP code and time
 echo "Testing URL: $EAST_US_URL"
 RESULT2=$(curl -w "HTTP code: %{http_code}\nTotal Time: %{time_total}" -o /dev/null -s $EAST_US_URL)
 CODE2=$(echo "$RESULT2" | grep "HTTP code" | awk '{print $NF}')
