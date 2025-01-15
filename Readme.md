@@ -77,7 +77,7 @@ kubectl config get-contexts
 # swtich to west europe cluster
 kubectl config use-context WestEuropeCluster
 
-# list deployments, nodes, pods and services
+# lists deployments, nodes, pods and services
 kubectl get deployments
 kubectl get nodes
 kubectl get svc 
@@ -88,10 +88,13 @@ kubectl config use-context EastUSCluster
 
 # 3. Demonstration
 
-The following scenarios should demonstarte the benefits of Edge Computing in general as well as using Kubernetes specific for this.
+The scenarios stated in the sections below should demonstrate the benefits of Edge Computing as well as utilizing Kubernetes for Edge Computing.
 
+The scripts that are used for the demo are located side the `demo-scripts`-directory. \
+- The tool **k6** (https://k6.io/) runs the `./demo-scripts/cluster-load-test.js`-script (which does stress an enpoint with - many concurent request) on a given endpoint. \
+- The bash-script `./benchmark-endpoints.sh` sends one request to the **global endpoint** and one to the enpoint of the **east us cluster** and measures the which response is faster.
+- Additionaly `kubectl` commands are utilized during the demonstration to enable auto-scaling of a cluster as well as for providing insigths into the current state of the clusters. 
 
-Demo scripts are located in the `demp-script` directory. 
 
 ## 3.1 Global endpoint (traffic manager, automatic request routing to the edge)
 Request sent to the global enpoint are routed to the closest regional cluster of the location of the incomming request. 
@@ -115,8 +118,7 @@ Due to the decentraliced nature of Edge Computing, it's easily possible to apply
 The following section demonstrates the scaling aspect of kubernetes from which edge computing benefits. 
 
 Measuring avg response time of endpoint / cluster in stressed (without auto-scaling):
-
-1) run `k6 run -e ENDPOINT=<endpoint url> loadtest.js`
+`k6 run -e ENDPOINT=<endpoint url> loadtest.js`
 
 Measuring avg response time of endpoint / cluster in stressed and non-stressed mode (with auto-scaling): 
 
