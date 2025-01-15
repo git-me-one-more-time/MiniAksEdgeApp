@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: miniedgeapp
-        image: miniedgeappacr.azurecr.io/minimal_edge_app1:0
+        image: miniedgeappacr.azurecr.io/minimal_edge_app1:2
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         env:

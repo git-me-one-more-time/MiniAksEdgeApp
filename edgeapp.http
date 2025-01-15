@@ -1,6 +1,0 @@
-@edgeapp_HostAddress = http://miniedgapp.eastus.cloudapp.azure.com
-
-GET {{edgeapp_HostAddress}}/
-Accept: plain
-
-###

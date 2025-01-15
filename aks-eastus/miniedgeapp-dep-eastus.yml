@@ -14,9 +14,17 @@ spec:
     spec:
       containers:
       - name: miniedgeapp
-        image: miniedgeappacr.azurecr.io/minimal_edge_app1:0
+        image: miniedgeappacr.azurecr.io/minimal_edge_app1:2
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         env:
         - name: REGION
           value: "eastus"
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "200Mi"
+          limits:
+            cpu: "500m"
+            memory: "500Mi"

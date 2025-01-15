@@ -4,17 +4,17 @@ GLOBAL_URL="http://miniedgeapp.trafficmanager.net/"
 EAST_US_URL="http://miniedgeapp.eastus.cloudapp.azure.com/"
 
 echo "Testing URL: $GLOBAL_URL"
-RESULT1=$(curl -w "HTTP code: %{http_code}\nTotal Time: %{time_total}" -o /dev/null -s $GLOBAL_URL)
+RESULT1=$(curl -w "HTTP code: %{http_code}\nTotal Response Time: %{time_total}" -o /dev/null -s $GLOBAL_URL)
 CODE1=$(echo "$RESULT1" | grep "HTTP code" | awk '{print $NF}')
-TIME1=$(echo "$RESULT1" | grep "Total Time" | awk '{print $NF}')
+TIME1=$(echo "$RESULT1" | grep "Total Response Time" | awk '{print $NF}')
 echo "$RESULT1 seconds"
 
 echo ""
 
 echo "Testing URL: $EAST_US_URL"
-RESULT2=$(curl -w "HTTP code: %{http_code}\nTotal Time: %{time_total}" -o /dev/null -s $EAST_US_URL)
+RESULT2=$(curl -w "HTTP code: %{http_code}\nTotal Response Time: %{time_total}" -o /dev/null -s $EAST_US_URL)
 CODE2=$(echo "$RESULT2" | grep "HTTP code" | awk '{print $NF}')
-TIME2=$(echo "$RESULT2" | grep "Total Time" | awk '{print $NF}')
+TIME2=$(echo "$RESULT2" | grep "Total Response Time" | awk '{print $NF}')
 echo "$RESULT2 seconds"
 
 echo ""
